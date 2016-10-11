@@ -25,7 +25,7 @@ first add this repository as a remote. We then fetch all the changes from this
 `java-repo-tools`.
 
 ```
-git remote add java-repo-tools git@github.com:GoogleCloudPlatform/java-repo-tools.git
+git remote add java-repo-tools https://github.com/GoogleCloudPlatform/java-repo-tools.git
 git fetch java-repo-tools master
 ```
 
