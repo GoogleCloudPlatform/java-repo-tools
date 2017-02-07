@@ -13,7 +13,6 @@
 # limitations under the License.
 language: java
 jdk:
-- oraclejdk7
 - oraclejdk8
 install: cd checkstyle-config && mvn clean install && cd ..
 script: mvn clean verify && cd test && mvn clean verify
