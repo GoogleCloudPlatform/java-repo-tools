@@ -30,6 +30,11 @@ limitations under the License.
     <relativePath>..</relativePath>
   </parent>
 
+  <properties>
+    <maven.compiler.source>1.7</maven.compiler.source> <!-- REQUIRED -->
+    <maven.compiler.target>1.7</maven.compiler.target> <!-- REQUIRED -->
+  </properties>
+
   <dependencies>
     <!-- Test Dependencies -->
     <dependency>
