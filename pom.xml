@@ -50,9 +50,9 @@ limitations under the License.
   </developers>
 
   <scm>
-    <url>https://github.com/GoogleCloudPlatform/java-repo-tools</url>
-    <connection>scm:git:https://github.com/GoogleCloudPlatform/java-repo-tools.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/GoogleCloudPlatform/java-repo-tools.git</developerConnection>
+    <connection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</connection>
+    <developerConnection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</developerConnection>
+    <url>git@github.com:GoogleCloudPlatform/java-repo-tools.git</url>
     <tag>v1.0.2</tag>
   </scm>
 
@@ -93,8 +93,41 @@ limitations under the License.
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.4</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <artifactId>maven-archetype-plugin</artifactId>
+            <version>2.4</version>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>${maven-gpg-plugin-version}</version>
+            <version>1.6</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -102,6 +135,10 @@ limitations under the License.
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <configuration>
+                  <keyname>${gpg.keyname}</keyname>
+                  <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                </configuration>
               </execution>
             </executions>
           </plugin>
@@ -111,35 +148,6 @@ limitations under the License.
   </profiles>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <!-- Plugins for release. See: http://central.sonatype.org/pages/apache-maven.html -->
-        <plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>${nexus-staging-maven-plugin-version}</version>
-          <extensions>true</extensions>
-          <configuration>
-            <serverId>ossrh</serverId>
-            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-            <stagingProfileId>2145015f0f5c04</stagingProfileId>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <version>${maven-release-plugin-version}</version>
-          <configuration>
-            <tagBase>scm:git:ssh://git@github.com/GoogleCloudPlatform/java-repo-tools.git</tagBase>
-            <tagNameFormat>v@{project.version}</tagNameFormat>
-            <useReleaseProfile>false</useReleaseProfile>
-            <releaseProfiles>release</releaseProfiles>
-            <goals>deploy</goals>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
     <plugins>
       <!-- Compiler -->
       <plugin>
@@ -237,17 +245,6 @@ limitations under the License.
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <!-- Release (not inherited) -->
-      <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <inherited>false</inherited>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <inherited>false</inherited>
       </plugin>
     </plugins>
   </build>
