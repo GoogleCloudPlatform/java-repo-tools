@@ -45,13 +45,19 @@ limitations under the License.
       <organization>Google Inc.</organization>
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
+    <developer>
+      <name>Jisha Abubaker</name>
+      <email>jishaa@google.com</email>
+      <organization>Google Inc.</organization>
+      <organizationUrl>https://cloud.google.com</organizationUrl>
+    </developer>
   </developers>
 
   <scm>
     <url>https://github.com/GoogleCloudPlatform/java-repo-tools</url>
     <connection>scm:git:https://github.com/GoogleCloudPlatform/java-repo-tools.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/GoogleCloudPlatform/java-repo-tools.git</developerConnection>
-    <tag>v1.0.0</tag>
+    <tag>v1.0.3-alpha</tag>
   </scm>
 
   <distributionManagement>
