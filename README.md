@@ -12,14 +12,14 @@ organization.
 
 ## Using this repository
 
-This package is meant to be used as a parent pom, so that checkstyle and other plugins run against sample code. Please ensure that samples function without this parent definition. The parent should be used only to enforce style and other checks.
+This package is meant to be used as a parent pom, so that [CheckStyle](https://github.com/checkstyle/checkstyle), [ErrorProne](http://errorprone.info/) and other plugins run against sample code. Please ensure that samples function without this parent definition. The parent should be used only to enforce style and other checks.
 
-```
+```xml
 <!-- Parent POM defines common plugins and properties. -->
 <parent>
   <groupId>com.google.cloud</groupId>
   <artifactId>shared-configuration</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </parent>
 ```
 
