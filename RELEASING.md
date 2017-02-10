@@ -40,16 +40,19 @@ depend on the released version and push & publish to Github.
 
 Next, prepare a release.
 
+1. sync to head; create a new branch
 1. remove `-SNAPSHOT` in both `pom.xml` and `test/pom.xml`
 1. Commit & Push to Github
-1. Publish on Github
+1. Merge on Github
 1. Tag the release on Github
+1. pull MASTER
 1. `mvn clean deploy -P release`
 1. At Maven Central close the release and release.
+1. On a new branch
 1. Increment the version number and add `-SNAPSHOT` in `pom.xml`, `test/pom.xml`, and if required
 `checkstyle-config/pom.xml`.
 1. Commit & Push to Github
-1. Publish on Github
+1. Merge on Github
 
 <!--
     mvn release:clean release:prepare
