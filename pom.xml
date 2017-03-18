@@ -79,7 +79,7 @@ limitations under the License.
     <!-- Plugin versions, so that they can get auto-updated by the versions plugin. -->
     <maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
     <codehaus-versions-maven-plugin-version>2.3</codehaus-versions-maven-plugin-version>
-    <jacoco-maven-plugin-version>0.7.7.201606060606</jacoco-maven-plugin-version>
+    <jacoco-maven-plugin-version>0.7.9</jacoco-maven-plugin-version>
     <nexus-staging-maven-plugin-version>1.6.7</nexus-staging-maven-plugin-version>
     <maven-failsafe-plugin-version>2.19.1</maven-failsafe-plugin-version>
     <maven-surefire-plugin-version>2.19.1</maven-surefire-plugin-version>
