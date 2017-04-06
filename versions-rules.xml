@@ -17,7 +17,7 @@ limitations under the License.
          xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0 http://mojo.codehaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
   <ignoreVersions>
-    <ignoreVersion type="regex">.*-alpha.*</ignoreVersion>
+<!--     <ignoreVersion type="regex">.*-alpha.*</ignoreVersion> -->
     <ignoreVersion type="regex">.*-b[0-9]*</ignoreVersion>
     <ignoreVersion type="regex">.*-pre.*</ignoreVersion>
     <ignoreVersion type="regex">.*public_draft</ignoreVersion>
@@ -31,6 +31,7 @@ limitations under the License.
         <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
     <!-- MySQL connector should not be automatically updated.
          Version 5.x needs to be used for Java 7 support.
          https://github.com/GoogleCloudPlatform/java-docs-samples/pull/456#discussion_r92676013 -->
@@ -39,6 +40,14 @@ limitations under the License.
         <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
+    <!-- Ignore grpc-versions upgrades -->
+    <rule groupId="io.grpc" comparisonMethod="maven">
+      <ignoreVersions>
+        <ignoreVersion>1.0.3</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+
     <!-- Guava should not be automatically updated.
          Version 21 requires Java 8 only. -->
     <rule groupId="com.google.guava" artifactId="guava" comparisonMethod="maven">
@@ -46,35 +55,41 @@ limitations under the License.
         <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
     <!-- SendGrid 3 libraries are broken in App Engine standard environment -->
     <rule groupId="com.sendgrid" artifactId="sendgrid-java" comparisonMethod="maven">
       <ignoreVersions>
         <ignoreVersion type="regex">3.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
     <!-- Logging v2 is a breaking change from v1, but samples are still v1. -->
     <rule groupId="com.google.apis" artifactId="google-api-services-logging" comparisonMethod="maven">
       <ignoreVersions>
         <ignoreVersion type="regex">v2.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
     <!-- Ignore beta versions of the App Engine Maven plugin -->
     <rule groupId="com.google.cloud.tools" artifactId="appengine-maven-plugin" comparisonMethod="maven">
       <ignoreVersions>
         <ignoreVersion type="regex">.*-beta.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
     <!-- Ignore beta versions of Mockito -->
     <rule groupId="org.mockito" artifactId="mockito-all" comparisonMethod="maven">
       <ignoreVersions>
         <ignoreVersion type="regex">.*-beta.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
     <!-- Ignore beta versions of Xmemcached-->
     <rule groupId="com.googlecode.xmemcached" artifactId="xmemcached" comparisonMethod="maven">
       <ignoreVersions>
         <ignoreVersion type="regex">.*-beta.*</ignoreVersion>
       </ignoreVersions>
     </rule>
+
   </rules>
 </ruleset>
