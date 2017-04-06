@@ -48,6 +48,19 @@ limitations under the License.
       </ignoreVersions>
     </rule>
 
+    <!-- Ignore servlet upgrades -->
+    <rule groupId="javax.servlet" artifactId="servlet-api" comparisonMethod="maven">
+      <ignoreVersions>
+        <ignoreVersion>2.5</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+ 
+     <rule groupId="javax.servlet" artifactId="javax.servlet-api" comparisonMethod="maven">
+      <ignoreVersions>
+        <ignoreVersion>3.1.0</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+       
     <!-- Guava should not be automatically updated.
          Version 21 requires Java 8 only. -->
     <rule groupId="com.google.guava" artifactId="guava" comparisonMethod="maven">
