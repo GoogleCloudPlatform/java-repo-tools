@@ -44,20 +44,14 @@ limitations under the License.
     <!-- Ignore grpc-versions upgrades -->
     <rule groupId="io.grpc" comparisonMethod="maven">
       <ignoreVersions>
-        <ignoreVersion>1.0.3</ignoreVersion>
+        <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
     </rule>
 
     <!-- Ignore servlet upgrades -->
     <rule groupId="javax.servlet" artifactId="servlet-api" comparisonMethod="maven">
       <ignoreVersions>
-        <ignoreVersion>2.5</ignoreVersion>
-      </ignoreVersions>
-    </rule>
- 
-     <rule groupId="javax.servlet" artifactId="javax.servlet-api" comparisonMethod="maven">
-      <ignoreVersions>
-        <ignoreVersion>3.1.0</ignoreVersion>
+        <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
     </rule>
        
