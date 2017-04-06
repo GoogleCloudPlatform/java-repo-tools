@@ -49,7 +49,7 @@ limitations under the License.
     </rule>
 
     <!-- Ignore servlet upgrades -->
-    <rule groupId="javax.servlet" artifactId="servlet-api" comparisonMethod="maven">
+    <rule groupId="javax.servlet" comparisonMethod="maven">
       <ignoreVersions>
         <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
