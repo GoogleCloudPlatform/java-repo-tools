@@ -81,8 +81,8 @@ limitations under the License.
     <plexus-compiler-javac-errorprone>2.8.1</plexus-compiler-javac-errorprone>
     <error_prone_core>2.0.19</error_prone_core>
 
-    <maven-failsafe-plugin>2.20</maven-failsafe-plugin>
-    <maven-surefire-plugin>2.20</maven-surefire-plugin>
+    <maven-failsafe-plugin>2.19.1</maven-failsafe-plugin>
+    <maven-surefire-plugin>2.19.1</maven-surefire-plugin>
     <maven-checkstyle-plugin>2.17</maven-checkstyle-plugin>
     <maven-clean-plugin>3.0.0</maven-clean-plugin>
     <maven-deploy-plugin>2.8.2</maven-deploy-plugin>
