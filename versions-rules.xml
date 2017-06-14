@@ -24,6 +24,8 @@ limitations under the License.
     <ignoreVersion type="regex">.*-rc(-)?[0-9]*</ignoreVersion>
   </ignoreVersions>
   <rules>
+    <rule groupId="com.google.appengine" comparisonMethod="maven" />
+
     <!-- Jetty should be manually, not automatically updated.
          https://github.com/GoogleCloudPlatform/java-docs-samples/pull/323 -->
     <rule groupId="org.eclipse.jetty" artifactId="jetty-maven-plugin" comparisonMethod="maven">
@@ -33,7 +35,7 @@ limitations under the License.
     </rule>
 
     <!-- MySQL connector should not be automatically updated.
-         Version 5.x needs to be used for Java 7 support.
+         Version 5.x is for production systems on Java 7 & Java 8.
          https://github.com/GoogleCloudPlatform/java-docs-samples/pull/456#discussion_r92676013 -->
     <rule groupId="mysql" artifactId="mysql-connector-java" comparisonMethod="maven">
       <ignoreVersions>
@@ -54,7 +56,7 @@ limitations under the License.
         <ignoreVersion type="regex">.*</ignoreVersion>
       </ignoreVersions>
     </rule>
-       
+
     <!-- Guava should not be automatically updated.
          Version 21 requires Java 8 only. -->
     <rule groupId="com.google.guava" artifactId="guava" comparisonMethod="maven">

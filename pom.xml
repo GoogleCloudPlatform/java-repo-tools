@@ -78,7 +78,7 @@ limitations under the License.
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <jacoco-maven-plugin>0.7.9</jacoco-maven-plugin>
-    <plexus-compiler-javac-errorprone>2.8.1</plexus-compiler-javac-errorprone>
+    <plexus-compiler-javac-errorprone>2.8.2</plexus-compiler-javac-errorprone>
     <error_prone_core>2.0.19</error_prone_core>
 
     <maven-failsafe-plugin>2.20</maven-failsafe-plugin>
