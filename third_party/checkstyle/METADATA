@@ -15,5 +15,5 @@ third_party {
   }
   version: "8.0"
   last_upgrade_date { year: 2017 month: 7 day: 24 }
-  local_modifications: "Initial checkin."
+  local_modifications: "SuppressWarningsFilter & SuppressionCommentFilter"
 }

@@ -18,7 +18,7 @@ limitations under the License.
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>shared-configuration</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.0.5</version>
   <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -59,7 +59,7 @@ limitations under the License.
     <connection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</connection>
     <developerConnection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</developerConnection>
     <url>git@github.com:GoogleCloudPlatform/java-repo-tools.git</url>
-    <tag>v1.0.4-alpha</tag>
+    <tag>v1.0.5</tag>
   </scm>
 
   <distributionManagement>
@@ -101,10 +101,6 @@ limitations under the License.
     <versions-maven-plugin>2.4</versions-maven-plugin>
     <maven-gpg-plugin>1.6</maven-gpg-plugin>
   </properties>
-
-  <prerequisites>
-    <maven>3.5.0</maven>
-  </prerequisites>
 
   <profiles>
     <!-- Code signing for release: http://stackoverflow.com/a/14869692/101923 -->
@@ -211,18 +207,25 @@ limitations under the License.
           <configLocation>google-checks.xml</configLocation>
           <consoleOutput>true</consoleOutput>
           <failOnViolation>true</failOnViolation>
-          <failsOnError>true</failsOnError>
           <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <suppressionsLocation>suppressions.xml</suppressionsLocation>
         </configuration>
         <dependencies>
           <!-- Add a dependency to use bundled resources.
                See: http://stackoverflow.com/a/19690484/101923 -->
+
           <dependency>
             <groupId>com.google.cloud.samples</groupId>
             <artifactId>checkstyle-configuration</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
           </dependency>
+
+          <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>8.1</version>
+          </dependency>
+
         </dependencies>
         <executions>
           <execution><goals><goal>check</goal></goals></execution>
