@@ -88,7 +88,7 @@ limitations under the License.
     <maven-deploy-plugin>2.8.2</maven-deploy-plugin>
     <maven-install-plugin>2.5.2</maven-install-plugin>
     <maven-site-plugin>3.6</maven-site-plugin>
-    <maven-compiler-plugin>3.6.1</maven-compiler-plugin>
+    <maven-compiler-plugin>3.6.2</maven-compiler-plugin>
     <maven-resources-plugin>3.0.2</maven-resources-plugin>
     <maven-war-plugin>3.0.0</maven-war-plugin>
     <maven-assembly-plugin>3.0.0</maven-assembly-plugin>
