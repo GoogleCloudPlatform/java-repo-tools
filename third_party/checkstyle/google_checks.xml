@@ -27,7 +27,15 @@
             <property name="eachLine" value="true"/>
         </module>
 
+    <module name="SuppressWarningsFilter" />
+
     <module name="TreeWalker">
+        <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
+        <!-- Make the @SuppressWarnings annotations available to Checkstyle -->
+        <!-- Allow silencing with comment http://stackoverflow.com/questions/4023185 -->
+        <module name="SuppressWarningsHolder" /> <!-- Java DPE's -->
+        <module name="SuppressionCommentFilter" />
+
         <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>

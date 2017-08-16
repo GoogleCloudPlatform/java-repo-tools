@@ -13,7 +13,7 @@ third_party {
     type: GIT
     value: "https://github.com/checkstyle/checkstyle"
   }
-  version: "8.0"
-  last_upgrade_date { year: 2017 month: 7 day: 24 }
+  version: "8.0.1"
+  last_upgrade_date { year: 2017 month: 8 day: 10 }
   local_modifications: "SuppressWarningsFilter & SuppressionCommentFilter"
 }
