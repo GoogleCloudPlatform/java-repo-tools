@@ -3,6 +3,10 @@ service-account.json
 ### Java ###
 *.class
 
+# intellij
+.idea/
+*.iml
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
