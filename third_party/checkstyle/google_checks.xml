@@ -30,10 +30,10 @@
     <module name="SuppressWarningsFilter" />
 
     <module name="TreeWalker">
+
         <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
-        <!-- Make the @SuppressWarnings annotations available to Checkstyle -->
+        <module name="SuppressWarningsHolder" />
         <!-- Allow silencing with comment http://stackoverflow.com/questions/4023185 -->
-        <module name="SuppressWarningsHolder" /> <!-- Java DPE's -->
         <module name="SuppressionCommentFilter" />
 
         <module name="OuterTypeFilename"/>
@@ -239,15 +239,6 @@
             <property name="exceptionVariableName" value="expected"/>
         </module>
         <module name="CommentsIndentation"/>
-      <!-- rules for DPE GH projects -->
-      <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
-<!--
-      <module name="SuppressWarningsFilter" />
- -->
-      <!-- Allow silencing with comment http://stackoverflow.com/questions/4023185 -->
-<!--
-      <module name="SuppressionCommentFilter" />
- -->
     </module>
 
 </module>
