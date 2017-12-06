@@ -1,0 +1,17 @@
+^/\*\*$
+^<!--$
+^\W+\*?\W*Copyright 2017 Google Inc.$
+^\W+\*?\W*$
+^\W+\*?\W*Licensed under the Apache License, Version 2.0 (the "License");$
+^\W+\*?\W*you may not use this file except in compliance with the License.$
+^\W+\*?\W*You may obtain a copy of the License at$
+^\W+\*?\W*$
+^\W+\*?\W\*http://www.apache.org/licenses/LICENSE-2.0$
+^\W+\*?\W*$
+^\W+\*?\W*$Unless required by applicable law or agreed to in writing, software$
+^\W+\*?\W*$distributed under the License is distributed on an "AS IS" BASIS,$
+^\W+\*?\W*$WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.$
+^\W+\*?\W*$See the License for the specific language governing permissions and$
+^\W+\*?\W*$limitations under the License.$
+^\W\*/$
+^-->$
