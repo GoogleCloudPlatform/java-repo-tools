@@ -40,7 +40,11 @@
     <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
     <module name="SuppressWarningsHolder"/>
     <!-- Allow silencing with comment http://stackoverflow.com/questions/4023185 -->
-    <module name="SuppressionCommentFilter"/>
+    <module name="SuppressionCommentFilter">
+      <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
+      <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
+      <property name="checkFormat" value="$1"/>
+    </module>
 
     <module name="OuterTypeFilename"/>
     <module name="IllegalTokenText">
