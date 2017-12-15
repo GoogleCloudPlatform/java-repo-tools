@@ -4,6 +4,18 @@ In general, follow the [instructions at Sonatype for using the Maven release
 plugin](http://central.sonatype.org/pages/apache-maven.html).
 
 ## Release the checkstyle-config package
+
+NOTE - Need to clean up instructions below, but the following works, after fixing the version (for
+all 3 pom.xml's), updating GH, tagging the release:
+
+    cd checkstyle-config
+    mvn clean verify deploy -P release
+    cd ..
+    mvn clean verify deploy -P release
+
+That will open, upload, close, and release.  The parent will need you to visit sonatype to close,
+and verify manually.
+
 ### Not yet updated to old way
 
 First, release the checkstyle-config package.
