@@ -19,7 +19,7 @@ limitations under the License.
 -->
 <suppressions>
   <!-- For our tests we do not demand API documentation. -->
-  <suppress files="[/\\]src[/\\]test[/\\]java[/\\].*\.java" checks="Javadoc.*"/>
+  <suppress files=".*\.java" checks="Javadoc.*"/>
 
   <!-- Suppress checks for generated code. -->
   <suppress files="[/\\]target[/\\]" checks=".+"/>
