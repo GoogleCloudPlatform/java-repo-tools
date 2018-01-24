@@ -49,10 +49,10 @@ RUN wget http://www-us.apache.org/dist/maven/maven-3/3.5.2/binaries/apache-maven
 ENV PATH="/opt/maven/bin:${PATH}"
 
 # Install Gradle
-RUN wget https://services.gradle.org/distributions/gradle-4.3-bin.zip \
-    && unzip gradle-4.3-bin.zip \
-    && rm gradle-4.3-bin.zip \
-    && mv gradle-4.3 /opt/gradle \
+RUN wget https://services.gradle.org/distributions/gradle-4.5-bin.zip \
+    && unzip gradle-4.5-bin.zip \
+    && rm gradle-4.5-bin.zip \
+    && mv gradle-4.5 /opt/gradle \
     && GRADLE_HOME=/opt/gradle
 ENV PATH="/opt/gradle/bin:${PATH}" 
     
