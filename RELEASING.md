@@ -3,69 +3,45 @@
 In general, follow the [instructions at Sonatype for using the Maven release
 plugin](http://central.sonatype.org/pages/apache-maven.html).
 
-## Release the checkstyle-config package
+## Update Versions
 
-NOTE - Need to clean up instructions below, but the following works, after fixing the version (for
-all 3 pom.xml's), updating GH, tagging the release:
+Remove the `-SNAPSHOT` from the versions property in the following POMs:
+* pom.xml
+* checkstyle-config/pom.xml
+* test/pom.xml
+
+PR changes to master, and once accepted use `git pull` update the master branch locally.
+
+Don't forget to specify a release tag on Github once your PR is accepted.
+
+## Release Packages
+
+From the root project folder, run the following command to release `checkstyle-config`:
 
     cd checkstyle-config
     mvn clean verify deploy -P release
+
+Next, use the following to release `shared-configuration`:
+
     cd ..
     mvn clean verify deploy -P release
 
 That will open, upload, close, and release.  The parent will need you to visit sonatype to close,
 and verify manually.
 
-### Not yet updated to old way
 
-First, release the checkstyle-config package.
+## Prepare for Next Release
 
-    cd checkstyle-config
-    mvn release:clean release:prepare
+Increment the version number, and append `-SNAPSHOT` (ie. '1.0.10' becomes '1.0.11-SNAPSHOT') inside the following POMs:
 
-This creates commits for the release and tags it. Next, update the parent pom
-to use the latest snapshot version so that the tests continue to pass.
+Remove the `-SNAPSHOT` from the versions property in the following POMs:
+* pom.xml
+* checkstyle-config/pom.xml
+* test/pom.xml
 
-    # Update the version in the checkstyle plugin resource dependencies.
-    vim ../pom.xml
-    git add ../pom.xml
-    git commit
-    git push origin branchname
+PR changes to master.
 
-Then, make a pull request for the release. After verifying that it works,
-perform the release to upload it to Maven Central.
-
-    mvn release:perform
-
-## Release the shared-configuration package
-
-After releasing the checkstyle-config package (if needed), update the root `pom.xml` to
-depend on the released version and push & publish to Github.
-
-<!--
-    # Use the latest released version of checkstyle-config.
-    vim pom.xml
-    git add pom.xml
-    git commit
- -->
-
-
-Next, prepare a release.
-
-1. sync to head; create a new branch
-1. remove `-SNAPSHOT` in both `pom.xml` and `test/pom.xml`
-1. Commit & Push to Github
-1. Merge on Github
-1. Tag the release on Github
-1. pull MASTER
-1. `mvn clean deploy -P release`
-1. At Maven Central close the release and release.
-1. On a new branch
-1. Increment the version number and add `-SNAPSHOT` in `pom.xml`, `test/pom.xml`, and if required
-`checkstyle-config/pom.xml`.
-1. Commit & Push to Github
-1. Merge on Github
-
+## .m2 Settings
 <!--
     mvn release:clean release:prepare
 
