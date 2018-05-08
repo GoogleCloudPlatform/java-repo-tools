@@ -1,6 +1,6 @@
 ^/\*$
 ^<!--$
-^\W+\*?\W*Copyright 20\d\d Google Inc.$
+^\W+\*?\W*Copyright 20\d\d Google (Inc\.|LLC)$
 ^\W+\*?\W*$
 ^\W+\*?\W*Licensed under the Apache License, Version 2.0 \(the "License"\);$
 ^\W+\*?\W*you may not use this file except in compliance with the License.$
