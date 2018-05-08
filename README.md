@@ -15,12 +15,15 @@ organization.
 This package is meant to be used as a parent pom, so that [CheckStyle](https://github.com/checkstyle/checkstyle), [ErrorProne](http://errorprone.info/) and other plugins run against sample code. Please ensure that samples function without this parent definition. The parent should be used only to enforce style and other checks.
 
 ```xml
-<!-- Parent POM defines common plugins and properties. -->
-<parent>
-  <groupId>com.google.cloud</groupId>
-  <artifactId>shared-configuration</artifactId>
-  <version>1.0.2</version>
-</parent>
+    <!--
+      The parent pom defines common style checks and testing strategies for our samples.
+      Removing or replacing it should not affect the execution of the samples in anyway.
+    -->
+    <parent>
+        <groupId>com.google.cloud.samples</groupId>
+        <artifactId>shared-configuration</artifactId>
+        <version>1.0.10</version>
+    </parent>
 ```
 
 You must also copy the files `google-checks.xml` and `suppressions.xml` to the same directory for the parent to work. We are working on [removing this requirement](https://github.com/GoogleCloudPlatform/java-repo-tools/issues/41).
