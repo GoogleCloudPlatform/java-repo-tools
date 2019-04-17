@@ -191,7 +191,7 @@ limitations under the License.
       <plugin> <!-- Unit Tests -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20.1</version>
+        <version>3.0.0-M3</version>
         <configuration>
           <reportNameSuffix>sponge_log</reportNameSuffix>
           <trimStackTrace>false</trimStackTrace>
@@ -201,7 +201,7 @@ limitations under the License.
       <plugin> <!-- Integration / System Tests -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.20.1</version>
+        <version>3.0.0-M3</version>
         <executions>
           <execution>
             <goals>
@@ -255,13 +255,13 @@ limitations under the License.
       <plugin> <!-- Used for managing and upgrading dependencies -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
-        <version>2.5</version>
+        <version>2.7</version>
       </plugin>
 
       <plugin> <!-- Used for creating basic report creation -->
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.9</version>
+        <version>0.8.3</version>
         <executions>
           <execution>
             <goals>
