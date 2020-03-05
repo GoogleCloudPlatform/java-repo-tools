@@ -11,13 +11,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+dist: bionic
 language: java
-jdk:
-- oraclejdk8
+
 install: cd checkstyle-config && mvn clean install && cd ..
-script: mvn clean verify && cd test && mvn clean verify
+
+script:  mvn clean verify && cd test && mvn clean verify
+
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+
 branches:
   only:
   - master
