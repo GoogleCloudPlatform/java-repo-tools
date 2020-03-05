@@ -18,7 +18,7 @@ limitations under the License.
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>checkstyle-configuration</artifactId>
-  <version>1.0.12-SNAPSHOT</version>
+  <version>1.0.12</version>
   <packaging>jar</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -36,18 +36,6 @@ limitations under the License.
     <developer>
       <name>Les Vogel</name>
       <email>lesv@google.com</email>
-      <organization>Google Inc.</organization>
-      <organizationUrl>https://cloud.google.com</organizationUrl>
-    </developer>
-    <developer>
-      <name>Tim Swast</name>
-      <email>swast@google.com</email>
-      <organization>Google Inc.</organization>
-      <organizationUrl>https://cloud.google.com</organizationUrl>
-    </developer>
-    <developer>
-      <name>Jisha Abubaker</name>
-      <email>jishaa@google.com</email>
       <organization>Google Inc.</organization>
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
