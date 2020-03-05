@@ -90,7 +90,7 @@ limitations under the License.
 
     <maven-release-plugin>2.5.3</maven-release-plugin>
     <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-    <versions-maven-plugin>2.4</versions-maven-plugin>
+    <versions-maven-plugin>2.7</versions-maven-plugin>
     <maven-gpg-plugin>1.6</maven-gpg-plugin>
   </properties>
 
