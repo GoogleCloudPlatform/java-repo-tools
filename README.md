@@ -22,7 +22,7 @@ This package is meant to be used as a parent pom, so that [CheckStyle](https://g
     <parent>
         <groupId>com.google.cloud.samples</groupId>
         <artifactId>shared-configuration</artifactId>
-        <version>1.0.10</version>
+        <version>1.0.12</version>
     </parent>
 ```
 

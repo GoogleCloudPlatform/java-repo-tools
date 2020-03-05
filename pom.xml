@@ -18,7 +18,7 @@ limitations under the License.
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>shared-configuration</artifactId>
-  <version>1.0.12</version>
+  <version>1.0.13-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -61,7 +61,7 @@ limitations under the License.
     <connection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</connection>
     <developerConnection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</developerConnection>
     <url>git@github.com:GoogleCloudPlatform/java-repo-tools.git</url>
-    <tag>v1.0.12</tag>
+    <tag>v1.0.13-snapshot</tag>
   </scm>
 
   <distributionManagement>
@@ -222,12 +222,12 @@ limitations under the License.
           <dependency>
             <groupId>com.google.cloud.samples</groupId>
             <artifactId>checkstyle-configuration</artifactId>
-            <version>1.0.12</version>
+            <version>1.0.13-SNAPSHOT</version>
           </dependency>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>[8.30,)</version>
+            <version>8.30</version>
           </dependency>
         </dependencies>
         <executions>
