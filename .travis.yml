@@ -13,7 +13,7 @@
 # limitations under the License.
 
 dist: bionic
-# language: java
+language: java
 
 install: cd checkstyle-config && mvn clean install && cd ..
 
