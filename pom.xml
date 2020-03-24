@@ -16,9 +16,16 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <properties>
+    <currentVersion>1.0.14-SNAPSHOT</currentVersion>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <javac.version>9+181-r4173-1</javac.version>
+  </properties>
+
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>shared-configuration</artifactId>
-  <version>1.0.13</version>
+  <version>${currentVersion}</version>
   <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -67,7 +74,7 @@ limitations under the License.
     <connection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</connection>
     <developerConnection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</developerConnection>
     <url>git@github.com:GoogleCloudPlatform/java-repo-tools.git</url>
-    <tag>v1.0.13</tag>
+    <tag>v${currentVersion}</tag>
   </scm>
 
   <distributionManagement>
@@ -80,12 +87,6 @@ limitations under the License.
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <javac.version>9+181-r4173-1</javac.version>
-  </properties>
 
   <profiles>
     <!-- Code signing for release: http://stackoverflow.com/a/14869692/101923 -->
@@ -106,11 +107,6 @@ limitations under the License.
                 </goals>
               </execution>
             </executions>
-          </plugin>
-
-          <plugin>
-            <artifactId>maven-archetype-plugin</artifactId>
-            <version>3.1.2</version>
           </plugin>
 
           <plugin>
@@ -229,7 +225,7 @@ limitations under the License.
           <dependency>
             <groupId>com.google.cloud.samples</groupId>
             <artifactId>checkstyle-configuration</artifactId>
-            <version>1.0.13</version>
+            <version>${currentVersion}</version>
           </dependency>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
