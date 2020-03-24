@@ -14,9 +14,15 @@
  -->
 
 <module name = "Checker">
+    <!-- Checks for License -->
+    <module name="RegexpHeader"><!-- lesv: added from old -->
+        <property name="headerFile" value="${checkstyle.header.file}"/>
+        <property name="multiLines" value="1,2,16,17"/>
+    </module>
+
     <property name="charset" value="UTF-8"/>
 
-    <property name="severity" value="error"/>
+    <property name="severity" value="error"/><!-- lesv: was warning -->
 
     <property name="fileExtensions" value="java, properties, xml"/>
     <!-- Excludes all 'module-info.java' files              -->
@@ -44,6 +50,15 @@
     </module>
 
     <module name="TreeWalker">
+        <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
+        <module name="SuppressWarningsHolder"/><!-- lesv -->
+        <!-- Allow silencing with comment http://stackoverflow.com/questions/4023185 -->
+        <module name="SuppressionCommentFilter"><!-- lesv -->
+            <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
+            <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
+            <property name="checkFormat" value="$1"/>
+        </module>
+
         <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>

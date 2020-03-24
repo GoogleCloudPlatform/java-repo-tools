@@ -50,6 +50,12 @@ limitations under the License.
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
     <developer>
+      <name>Averi Kitsch‎</name>
+      <email>akitsch@google.com</email>
+      <organization>Google Inc.</organization>
+      <organizationUrl>https://cloud.google.com</organizationUrl>
+    </developer>
+    <developer>
       <name>Dane Zeke Liergaard</name>
       <email>dzlier@google.com</email>
       <organization>Google Inc.</organization>
@@ -209,8 +215,9 @@ limitations under the License.
         <version>3.1.1</version>
         <configuration>
           <configLocation>google-checks.xml</configLocation>
-          <headerLocation>LICENSE.txt</headerLocation>
           <suppressionsLocation>suppressions.xml</suppressionsLocation>
+          <headerLocation>LICENSE.txt</headerLocation>
+
           <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <consoleOutput>true</consoleOutput>
           <logViolationsToConsole>true</logViolationsToConsole>
