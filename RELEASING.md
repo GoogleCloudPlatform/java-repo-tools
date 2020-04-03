@@ -6,9 +6,9 @@ plugin](http://central.sonatype.org/pages/apache-maven.html).
 ## Update Versions
 
 Remove the `-SNAPSHOT` from the versions property in the following POMs:
-* pom.xml
-* checkstyle-config/pom.xml
-* test/pom.xml
+* pom.xml (3 of them)
+* checkstyle-config/pom.xml (one)
+* test/pom.xml (one)
 
 PR changes to master, and once accepted use `git pull` update the master branch locally.
 
@@ -34,10 +34,10 @@ and verify manually.
 
 Increment the version number, and append `-SNAPSHOT` (ie. '1.0.10' becomes '1.0.11-SNAPSHOT') inside the following POMs:
 
-Remove the `-SNAPSHOT` from the versions property in the following POMs:
-* pom.xml
-* checkstyle-config/pom.xml
-* test/pom.xml
+Add the `-SNAPSHOT` from the versions property in the following POMs:
+* pom.xml (3 places)
+* checkstyle-config/pom.xml (1 place)
+* test/pom.xml (1 place)
 
 PR changes to master.
 
