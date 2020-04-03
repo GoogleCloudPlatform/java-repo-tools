@@ -13,13 +13,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <javac.version>9+181-r4173-1</javac.version>
+
+    <maven-release-plugin>2.5.3</maven-release-plugin><!-- could be 3.0.0-M1 -->
+    <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
+    <versions-maven-plugin>2.7</versions-maven-plugin>
+    <maven-gpg-plugin>1.6</maven-gpg-plugin>
+    <pmdVersion>6.22.0</pmdVersion>
   </properties>
 
   <groupId>com.google.cloud.samples</groupId>
@@ -71,7 +79,8 @@ limitations under the License.
 
   <scm>
     <connection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</connection>
-    <developerConnection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git</developerConnection>
+    <developerConnection>scm:git:git@github.com:GoogleCloudPlatform/java-repo-tools.git
+    </developerConnection>
     <url>git@github.com:GoogleCloudPlatform/java-repo-tools.git</url>
     <tag>v${project.version}</tag>
   </scm>
@@ -111,7 +120,7 @@ limitations under the License.
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>${maven-gpg-plugin}</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -119,7 +128,7 @@ limitations under the License.
                 <goals>
                   <goal>sign</goal>
                 </goals>
-                <configuration>
+                <configuration><!-- extra -->
                   <keyname>${gpg.keyname}</keyname>
                   <passphraseServerId>${gpg.keyname}</passphraseServerId>
                 </configuration>
@@ -145,7 +154,9 @@ limitations under the License.
             <configuration>
               <fork>true</fork>
               <compilerArgs combine.children="append">
-                <arg>-J-Xbootclasspath/p:${settings.localRepository}/com/google/errorprone/javac/${javac.version}/javac-${javac.version}.jar</arg>
+                <arg>
+                  -J-Xbootclasspath/p:${settings.localRepository}/com/google/errorprone/javac/${javac.version}/javac-${javac.version}.jar
+                </arg>
               </compilerArgs>
             </configuration>
           </plugin>
@@ -154,9 +165,17 @@ limitations under the License.
     </profile>
   </profiles>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>4.0.1</version>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
-
       <!-- Compile w/ ErrorProne (see https://errorprone.info) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -187,7 +206,7 @@ limitations under the License.
         </configuration>
       </plugin>
 
-      <plugin> <!-- Integration / System Tests -->
+      <plugin> <!-- FAILSAFE -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.0.0-M4</version>
@@ -204,13 +223,14 @@ limitations under the License.
         </configuration>
       </plugin>
 
-      <plugin>
+      <plugin><!-- SPOTBUGS -->
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
         <version>4.0.0</version>
         <executions>
           <execution>
-            <phase>verify</phase>
+            <id>analyze-compile</id>
+            <phase>compile</phase>
             <goals>
               <goal>check</goal>
             </goals>
@@ -223,10 +243,80 @@ limitations under the License.
             <artifactId>spotbugs</artifactId>
             <version>4.0.1</version>
           </dependency>
+          <dependency>
+            <groupId>com.google.cloud.samples</groupId>
+            <artifactId>checkstyle-configuration</artifactId>
+            <version>1.0.15-SNAPSHOT</version>
+          </dependency>
         </dependencies>
+        <configuration>
+          <failOnError>false</failOnError><!-- Let's not fail for now -->
+          <effort>Max</effort>
+          <threshold>Low</threshold>
+          <includeTests>true</includeTests>
+          <fork>false</fork>
+          <!-- Can't currently find this for some reason, so commenting out -->
+          <excludeFilterFile>c.g.c.s/spotBugsExcludeFilter.xml</excludeFilterFile>
+          <plugins>
+            <plugin>
+              <groupId>com.h3xstream.findsecbugs</groupId>
+              <artifactId>findsecbugs-plugin</artifactId>
+              <version>1.10.1</version>
+            </plugin>
+            <plugin>
+              <groupId>com.mebigfatguy.sb-contrib</groupId>
+              <artifactId>sb-contrib</artifactId>
+              <version>7.4.7</version>
+            </plugin>
+            <!--            <plugin> https://github.com/KengoTODA/findbugs-slf4j -->
+            <!--              <groupId>jp.skypencil.findbugs.slf4j</groupId>-->
+            <!--              <artifactId>findbugs-slf4j</artifactId>-->
+            <!--              <version>1.5.0</version>-->
+            <!--            </plugin>-->
+          </plugins>
+        </configuration>
       </plugin>
 
-      <plugin> <!-- Style Check -->
+      <plugin><!-- PMD -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.13.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-core</artifactId>
+            <version>${pmdVersion}</version>
+          </dependency>
+          <dependency>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-java</artifactId>
+            <version>${pmdVersion}</version>
+          </dependency>
+          <dependency>
+            <groupId>net.sourceforge.pmd</groupId>
+            <artifactId>pmd-java8</artifactId>
+            <version>${pmdVersion}</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <failOnViolation>false</failOnViolation>
+          <printFailingErrors>true</printFailingErrors>
+          <skipEmptyReport>false</skipEmptyReport>
+          <linkXRef>false</linkXRef>
+          <targetJdk>${maven.compiler.source}</targetJdk>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>check</goal>
+              <goal>cpd-check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin> <!-- Checkstyle -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>3.1.1</version>
@@ -264,13 +354,13 @@ limitations under the License.
         </executions>
       </plugin>
 
-      <plugin> <!-- Used for managing and upgrading dependencies -->
+      <plugin> <!-- Versions -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
         <version>2.7</version>
       </plugin>
 
-      <plugin> <!-- Used for creating basic report creation -->
+      <plugin> <!-- JACOCO - reporting -->
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.5</version>

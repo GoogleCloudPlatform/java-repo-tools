@@ -21,6 +21,17 @@ limitations under the License.
   <version>1.0.15-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <maven-release-plugin>2.5.3</maven-release-plugin><!-- could be 3.0.0-M1 -->
+    <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
+    <versions-maven-plugin>2.7</versions-maven-plugin>
+    <maven-gpg-plugin>1.6</maven-gpg-plugin>
+  </properties>
+
+
   <name>${project.groupId}:${project.artifactId}</name>
   <description>A common checkstyle configuration for Google Cloud samples.</description>
   <url>https://github.com/GoogleCloudPlatform/java-repo-tools</url>
@@ -77,16 +88,6 @@ limitations under the License.
     </repository>
   </distributionManagement>
 
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <maven-release-plugin>2.5.3</maven-release-plugin>
-    <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-    <versions-maven-plugin>2.7</versions-maven-plugin>
-    <maven-gpg-plugin>1.6</maven-gpg-plugin>
-  </properties>
 
   <profiles>
     <!-- Code signing for release: http://stackoverflow.com/a/14869692/101923 -->

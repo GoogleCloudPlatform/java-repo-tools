@@ -16,16 +16,14 @@
 
 package com.google.cloud.samples.test;
 
-/**
- * A hello world app to test the parent pom.xml.
- */
+/** A hello world app to test the parent pom.xml. */
 public class App {
-  public String greeting() {
-    return "Hello World!";
-  }
-
   public static void main(String[] args) {
     App app = new App();
     System.out.println(app.greeting());
+  }
+
+  public String greeting() {
+    return "Hello World!";
   }
 }
