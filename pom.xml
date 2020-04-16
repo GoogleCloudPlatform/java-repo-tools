@@ -206,7 +206,6 @@ limitations under the License.
               </execution>
             </executions>
             <dependencies>
-              <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
               <dependency>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs</artifactId>
@@ -224,7 +223,6 @@ limitations under the License.
               <threshold>Low</threshold>
               <includeTests>true</includeTests>
               <fork>false</fork>
-              <!-- Can't currently find this for some reason, so commenting out -->
               <excludeFilterFile>c.g.c.s/spotBugsExcludeFilter.xml</excludeFilterFile>
               <plugins>
                 <plugin>
@@ -237,6 +235,7 @@ limitations under the License.
                   <artifactId>sb-contrib</artifactId>
                   <version>7.4.7</version>
                 </plugin>
+                <!-- Great idea, but we need to have a single logging story before we do this -->
                 <!--            <plugin> https://github.com/KengoTODA/findbugs-slf4j -->
                 <!--              <groupId>jp.skypencil.findbugs.slf4j</groupId>-->
                 <!--              <artifactId>findbugs-slf4j</artifactId>-->
