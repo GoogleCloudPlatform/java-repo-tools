@@ -12,7 +12,17 @@ organization.
 
 ## Using this repository
 
-This package is meant to be used as a parent pom, so that [CheckStyle](https://github.com/checkstyle/checkstyle), [ErrorProne](http://errorprone.info/) and other plugins run against sample code. Please ensure that samples function without this parent definition. The parent should be used only to enforce style and other checks.
+This package should be used as a parent `pom.xml`. It adds:
+ * [CheckStyle](https://github.com/checkstyle/checkstyle) Enforces the 
+ [Google Java Style guide](https://google.github.io/styleguide/javaguide.html)
+ * [ErrorProne](http://errorprone.info/) Google written code analyzer
+ * [PMD](https://pmd.github.io/) A cross-language static code analyzer
+ * [SpotBugs](https://spotbugs.readthedocs.io/en/stable/) Find well know bug patterns with these
+ extensions:
+   * [Find Security Bugs](http://find-sec-bugs.github.io/) Security audits of Java Web Applications.
+   * [fb-contrib](http://fb-contrib.sourceforge.net/) Static code analysis on Java byte code.
+
+Please ensure that samples function without this parent definition.
 
 ```xml
     <!--
@@ -22,11 +32,15 @@ This package is meant to be used as a parent pom, so that [CheckStyle](https://g
     <parent>
         <groupId>com.google.cloud.samples</groupId>
         <artifactId>shared-configuration</artifactId>
-        <version>1.0.12</version>
+        <version>1.0.17</version>
     </parent>
 ```
 
-You must also copy the files `google-checks.xml` and `suppressions.xml` to the same directory for the parent to work. We are working on [removing this requirement](https://github.com/GoogleCloudPlatform/java-repo-tools/issues/41).
+## USAGE
+
+```bash
+mvn -P lint clean package verify
+```
 
 ## Where is this used?
 

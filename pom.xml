@@ -24,6 +24,7 @@ limitations under the License.
     <javac.version>9+181-r4173-1</javac.version>
 
     <maven-release-plugin>2.5.3</maven-release-plugin><!-- could be 3.0.0-M1 -->
+    <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
     <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
     <versions-maven-plugin>2.7</versions-maven-plugin>
     <maven-gpg-plugin>1.6</maven-gpg-plugin>
@@ -151,6 +152,7 @@ limitations under the License.
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven-compiler-plugin}</version>
             <configuration>
               <fork>true</fork>
               <compilerArgs combine.children="append">
@@ -160,6 +162,167 @@ limitations under the License.
               </compilerArgs>
             </configuration>
           </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- only lint when we ask -->
+    <profile>
+      <id>lint</id>
+      <build>
+        <plugins>
+
+          <!-- Compile w/ ErrorProne (see https://errorprone.info) -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven-compiler-plugin}</version>
+            <configuration>
+              <compilerArgs>
+                <arg>-XDcompilePolicy=simple</arg>
+                <arg>-Xplugin:ErrorProne</arg>
+              </compilerArgs>
+              <annotationProcessorPaths>
+                <path>
+                  <groupId>com.google.errorprone</groupId>
+                  <artifactId>error_prone_core</artifactId>
+                  <version>2.3.4</version>
+                </path>
+              </annotationProcessorPaths>
+            </configuration>
+          </plugin>
+
+          <plugin><!-- SPOTBUGS -->
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <version>4.0.0</version>
+            <executions>
+              <execution>
+                <id>analyze-compile</id>
+                <phase>compile</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
+            <dependencies>
+              <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
+              <dependency>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs</artifactId>
+                <version>4.0.1</version>
+              </dependency>
+              <dependency>
+                <groupId>com.google.cloud.samples</groupId>
+                <artifactId>checkstyle-configuration</artifactId>
+                <version>1.0.17-SNAPSHOT</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <failOnError>false</failOnError><!-- Let's not fail for now -->
+              <effort>Max</effort>
+              <threshold>Low</threshold>
+              <includeTests>true</includeTests>
+              <fork>false</fork>
+              <!-- Can't currently find this for some reason, so commenting out -->
+              <excludeFilterFile>c.g.c.s/spotBugsExcludeFilter.xml</excludeFilterFile>
+              <plugins>
+                <plugin>
+                  <groupId>com.h3xstream.findsecbugs</groupId>
+                  <artifactId>findsecbugs-plugin</artifactId>
+                  <version>1.10.1</version>
+                </plugin>
+                <plugin>
+                  <groupId>com.mebigfatguy.sb-contrib</groupId>
+                  <artifactId>sb-contrib</artifactId>
+                  <version>7.4.7</version>
+                </plugin>
+                <!--            <plugin> https://github.com/KengoTODA/findbugs-slf4j -->
+                <!--              <groupId>jp.skypencil.findbugs.slf4j</groupId>-->
+                <!--              <artifactId>findbugs-slf4j</artifactId>-->
+                <!--              <version>1.5.0</version>-->
+                <!--            </plugin>-->
+              </plugins>
+            </configuration>
+          </plugin>
+
+          <plugin><!-- PMD -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>3.13.0</version>
+            <dependencies>
+              <dependency>
+                <groupId>net.sourceforge.pmd</groupId>
+                <artifactId>pmd-core</artifactId>
+                <version>${pmdVersion}</version>
+              </dependency>
+              <dependency>
+                <groupId>net.sourceforge.pmd</groupId>
+                <artifactId>pmd-java</artifactId>
+                <version>${pmdVersion}</version>
+              </dependency>
+              <dependency>
+                <groupId>net.sourceforge.pmd</groupId>
+                <artifactId>pmd-java8</artifactId>
+                <version>${pmdVersion}</version>
+              </dependency>
+            </dependencies>
+            <configuration>
+              <failOnViolation>false</failOnViolation>
+              <printFailingErrors>true</printFailingErrors>
+              <skipEmptyReport>false</skipEmptyReport>
+              <linkXRef>false</linkXRef>
+              <targetJdk>${maven.compiler.source}</targetJdk>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>compile</phase>
+                <goals>
+                  <goal>check</goal>
+                  <goal>cpd-check</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin> <!-- Checkstyle -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.1.1</version>
+            <configuration>
+              <configLocation>google-checks.xml</configLocation>
+              <suppressionsLocation>suppressions.xml</suppressionsLocation>
+              <headerLocation>LICENSE.txt</headerLocation>
+
+              <includeTestSourceDirectory>true</includeTestSourceDirectory>
+              <consoleOutput>true</consoleOutput>
+              <logViolationsToConsole>true</logViolationsToConsole>
+              <failOnViolation>true</failOnViolation>
+            </configuration>
+            <dependencies>
+              <!-- Add a dependency to use bundled resources.
+                   See: http://stackoverflow.com/a/19690484/101923 -->
+              <dependency>
+                <groupId>com.google.cloud.samples</groupId>
+                <artifactId>checkstyle-configuration</artifactId>
+                <version>1.0.17-SNAPSHOT</version>
+              </dependency>
+              <dependency>
+                <groupId>com.puppycrawl.tools</groupId>
+                <artifactId>checkstyle</artifactId>
+                <version>8.31</version>
+              </dependency>
+            </dependencies>
+            <executions>
+              <execution>
+                <phase>verify</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
         </plugins>
       </build>
     </profile>
@@ -176,26 +339,6 @@ limitations under the License.
 
   <build>
     <plugins>
-      <!-- Compile w/ ErrorProne (see https://errorprone.info) -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <compilerArgs>
-            <arg>-XDcompilePolicy=simple</arg>
-            <arg>-Xplugin:ErrorProne</arg>
-          </compilerArgs>
-          <annotationProcessorPaths>
-            <path>
-              <groupId>com.google.errorprone</groupId>
-              <artifactId>error_prone_core</artifactId>
-              <version>2.3.4</version>
-            </path>
-          </annotationProcessorPaths>
-        </configuration>
-      </plugin>
-
       <plugin> <!-- Unit Tests -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -221,137 +364,6 @@ limitations under the License.
         <configuration>
           <reportNameSuffix>sponge_log</reportNameSuffix>
         </configuration>
-      </plugin>
-
-      <plugin><!-- SPOTBUGS -->
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>4.0.0</version>
-        <executions>
-          <execution>
-            <id>analyze-compile</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <dependencies>
-          <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
-          <dependency>
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs</artifactId>
-            <version>4.0.1</version>
-          </dependency>
-          <dependency>
-            <groupId>com.google.cloud.samples</groupId>
-            <artifactId>checkstyle-configuration</artifactId>
-            <version>1.0.17-SNAPSHOT</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <failOnError>false</failOnError><!-- Let's not fail for now -->
-          <effort>Max</effort>
-          <threshold>Low</threshold>
-          <includeTests>true</includeTests>
-          <fork>false</fork>
-          <!-- Can't currently find this for some reason, so commenting out -->
-          <excludeFilterFile>c.g.c.s/spotBugsExcludeFilter.xml</excludeFilterFile>
-          <plugins>
-            <plugin>
-              <groupId>com.h3xstream.findsecbugs</groupId>
-              <artifactId>findsecbugs-plugin</artifactId>
-              <version>1.10.1</version>
-            </plugin>
-            <plugin>
-              <groupId>com.mebigfatguy.sb-contrib</groupId>
-              <artifactId>sb-contrib</artifactId>
-              <version>7.4.7</version>
-            </plugin>
-            <!--            <plugin> https://github.com/KengoTODA/findbugs-slf4j -->
-            <!--              <groupId>jp.skypencil.findbugs.slf4j</groupId>-->
-            <!--              <artifactId>findbugs-slf4j</artifactId>-->
-            <!--              <version>1.5.0</version>-->
-            <!--            </plugin>-->
-          </plugins>
-        </configuration>
-      </plugin>
-
-      <plugin><!-- PMD -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.13.0</version>
-        <dependencies>
-          <dependency>
-            <groupId>net.sourceforge.pmd</groupId>
-            <artifactId>pmd-core</artifactId>
-            <version>${pmdVersion}</version>
-          </dependency>
-          <dependency>
-            <groupId>net.sourceforge.pmd</groupId>
-            <artifactId>pmd-java</artifactId>
-            <version>${pmdVersion}</version>
-          </dependency>
-          <dependency>
-            <groupId>net.sourceforge.pmd</groupId>
-            <artifactId>pmd-java8</artifactId>
-            <version>${pmdVersion}</version>
-          </dependency>
-        </dependencies>
-        <configuration>
-          <failOnViolation>false</failOnViolation>
-          <printFailingErrors>true</printFailingErrors>
-          <skipEmptyReport>false</skipEmptyReport>
-          <linkXRef>false</linkXRef>
-          <targetJdk>${maven.compiler.source}</targetJdk>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-              <goal>cpd-check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin> <!-- Checkstyle -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.1.1</version>
-        <configuration>
-          <configLocation>google-checks.xml</configLocation>
-          <suppressionsLocation>suppressions.xml</suppressionsLocation>
-          <headerLocation>LICENSE.txt</headerLocation>
-
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <consoleOutput>true</consoleOutput>
-          <logViolationsToConsole>true</logViolationsToConsole>
-          <failOnViolation>true</failOnViolation>
-        </configuration>
-        <dependencies>
-          <!-- Add a dependency to use bundled resources.
-               See: http://stackoverflow.com/a/19690484/101923 -->
-          <dependency>
-            <groupId>com.google.cloud.samples</groupId>
-            <artifactId>checkstyle-configuration</artifactId>
-            <version>1.0.17-SNAPSHOT</version>
-          </dependency>
-          <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
-            <artifactId>checkstyle</artifactId>
-            <version>8.31</version>
-          </dependency>
-        </dependencies>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin> <!-- Versions -->
