@@ -173,6 +173,7 @@ limitations under the License.
         <plugins>
 
           <!-- Compile w/ ErrorProne (see https://errorprone.info) -->
+          <!-- ie runs on: mvn compile -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -218,7 +219,7 @@ limitations under the License.
               </dependency>
             </dependencies>
             <configuration>
-              <failOnError>false</failOnError><!-- Let's not fail for now -->
+              <failOnError>true</failOnError>
               <effort>Max</effort>
               <threshold>Low</threshold>
               <includeTests>true</includeTests>
@@ -267,7 +268,7 @@ limitations under the License.
               </dependency>
             </dependencies>
             <configuration>
-              <failOnViolation>false</failOnViolation>
+              <failOnViolation>true</failOnViolation>
               <printFailingErrors>true</printFailingErrors>
               <skipEmptyReport>false</skipEmptyReport>
               <linkXRef>false</linkXRef>
