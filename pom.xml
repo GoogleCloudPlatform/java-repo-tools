@@ -33,7 +33,7 @@ limitations under the License.
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>shared-configuration</artifactId>
-  <version>1.0.18-SNAPSHOT</version>
+  <version>1.0.18</version>
   <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -215,7 +215,7 @@ limitations under the License.
               <dependency>
                 <groupId>com.google.cloud.samples</groupId>
                 <artifactId>checkstyle-configuration</artifactId>
-                <version>1.0.18-SNAPSHOT</version>
+                <version>1.0.18</version>
               </dependency>
             </dependencies>
             <configuration>
@@ -305,7 +305,7 @@ limitations under the License.
               <dependency>
                 <groupId>com.google.cloud.samples</groupId>
                 <artifactId>checkstyle-configuration</artifactId>
-                <version>1.0.18-SNAPSHOT</version>
+                <version>1.0.18</version>
               </dependency>
               <dependency>
                 <groupId>com.puppycrawl.tools</groupId>
