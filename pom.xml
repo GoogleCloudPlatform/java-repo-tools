@@ -210,7 +210,7 @@ limitations under the License.
               <dependency>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs</artifactId>
-                <version>4.0.4</version>
+                <version>4.0.5</version>
               </dependency>
               <dependency>
                 <groupId>com.google.cloud.samples</groupId>
