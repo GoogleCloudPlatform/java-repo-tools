@@ -28,7 +28,7 @@ limitations under the License.
     <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
     <versions-maven-plugin>2.7</versions-maven-plugin>
     <maven-gpg-plugin>1.6</maven-gpg-plugin>
-    <pmdVersion>6.26.0</pmdVersion>
+    <pmdVersion>6.27.0</pmdVersion>
   </properties>
 
   <groupId>com.google.cloud.samples</groupId>
