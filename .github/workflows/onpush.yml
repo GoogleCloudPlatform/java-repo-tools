@@ -12,9 +12,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Build, install & test with Maven
-        run: |
-          cd checkstyle-config && mvn -B clean install && cd ..
-          mvn -B clean verify 
-          cd test && mvn -B -P lint clean verify
-          bash <(curl -s https://codecov.io/bash)
+      - name: Build & Install checkstyle-config
+        run: cd checkstyle-config && mvn -B clean install && cd ..
+      - name: Build root
+        run: mvn -B clean verify
+      - name: Test lint
+        run: cd test && mvn -B -P lint clean verify
+      - name: notify CodeCov
+        run: bash <(curl -s https://codecov.io/bash)
