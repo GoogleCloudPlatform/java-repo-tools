@@ -29,6 +29,7 @@ limitations under the License.
     <versions-maven-plugin>2.7</versions-maven-plugin>
     <maven-gpg-plugin>1.6</maven-gpg-plugin>
     <pmdVersion>6.27.0</pmdVersion>
+    <skipTests>false</skipTests>
   </properties>
 
   <groupId>com.google.cloud.samples</groupId>
@@ -344,6 +345,7 @@ limitations under the License.
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
+          <skipTests>${skipTests}</skipTests>
           <reportNameSuffix>sponge_log</reportNameSuffix>
           <trimStackTrace>false</trimStackTrace>
         </configuration>

@@ -16,6 +16,8 @@
 
 package com.google.cloud.samples.test;
 
+import java.time.LocalDateTime;
+
 /** A hello world app to test the parent pom.xml. */
 public class App {
   public static void main(String[] args) {
@@ -23,7 +25,7 @@ public class App {
     System.out.println(app.greeting());
   }
 
-  public String greeting() {
-    return "Hello World!";
+  private String greeting() {
+    return "Hello World! " + LocalDateTime.now();
   }
 }
