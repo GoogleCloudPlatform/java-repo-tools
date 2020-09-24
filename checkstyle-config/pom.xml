@@ -18,7 +18,7 @@ limitations under the License.
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>checkstyle-configuration</artifactId>
-  <version>1.0.19</version>
+  <version>1.0.20-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -57,7 +57,7 @@ limitations under the License.
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
     <developer>
-      <name>Averi Kitsch‎</name>
+      <name>Averi Kitsch</name>
       <email>akitsch@google.com</email>
       <organization>Google Inc.</organization>
       <organizationUrl>https://cloud.google.com</organizationUrl>

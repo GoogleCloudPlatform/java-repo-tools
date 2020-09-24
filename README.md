@@ -32,14 +32,14 @@ Please ensure that samples function without this parent definition.
     <parent>
         <groupId>com.google.cloud.samples</groupId>
         <artifactId>shared-configuration</artifactId>
-        <version>1.0.17</version>
+        <version>1.0.19</version>
     </parent>
 ```
 
 ## USAGE
 
 ```bash
-mvn -P lint clean package verify
+mvn -P lint clean verify
 ```
 
 ## Where is this used?

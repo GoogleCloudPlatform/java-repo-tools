@@ -3,3 +3,6 @@
 This is a test application for checking that the root [`pom.xml`](../pom.xml)
 and [`google-checks.xml`](../google-checks.xml) are working as expected.
 
+```shell script
+mvn -P lint clean verify
+```
