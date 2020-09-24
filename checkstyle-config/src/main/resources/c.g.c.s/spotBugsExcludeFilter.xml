@@ -25,19 +25,28 @@ see https://spotbugs.readthedocs.io/en/stable/bugDescriptions.html
   xmlns="https://github.com/spotbugs/filter/3.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
-  <Match>
-    <!-- TODO: Remove once SpotBugs fully supports Java 11 (JENKINS-53720) -->
-    <!-- JDK 11 generates a different binary code than expected by SpotBugs -->
-    <!-- https://github.com/spotbugs/spotbugs/issues/756 -->
-    <Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE"/>
-  </Match>
-  <!-- From https://github.com/GoogleCloudPlatform/java-repo-tools/issues/123 -->
-  <!-- https://github.com/GoogleCloudPlatform/java-docs-samples/pull/2630#issuecomment-612320968 -->
-  <!--      <Bug pattern="IMC_IMMATURE_CLASS_NO_TOSTRING" />-->
-  <!--      <Bug pattern="CRLF_INJECTION_LOGS" />-->
-  <!--      <Bug pattern="LI_LAZY_INIT_STATIC" />-->
   <!--      <Bug pattern="DLS_DEAD_LOCAL_STORE" />-->
 
+  <Match> <!-- Global excludes https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Or>
+      <Bug pattern="IMC_IMMATURE_CLASS_NO_TOSTRING" /> <!-- Let me skip toString() -->
+      <Bug pattern="CRLF_INJECTION_LOGS" /> <!-- Let me inject /n/r into logs -->
+    </Or>
+  </Match>
+
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/171 -->
+    <!-- query watch where a callback has to be supplied (sure it could be a separate class from a
+         type signature standpoint, but that moves the code away from the sample) -->
+    <Bug pattern="SIC_INNER_SHOULD_BE_STATIC_ANON" />
+  </Match>
+
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/171 -->
+    <!-- code in question is creating the initial dataset to show how queries work, and
+         necessarily have to call the same methods a few times -->
+    <Bug pattern="PRMC_POSSIBLY_REDUNDANT_METHOD_CALLS" />
+  </Match>
   <Match>
     <!-- https://github.com/spotbugs/spotbugs/issues/735 -->
     <Bug pattern="UPM_UNCALLED_PRIVATE_METHOD"/>
@@ -48,15 +57,36 @@ see https://spotbugs.readthedocs.io/en/stable/bugDescriptions.html
   </Match>
 
   <Match>
-    <!-- Samples uses this idiom a lot, so I'm turning it off -->
+    <!-- Samples uses this idiom a lot -->
     <Bug pattern="CLI_CONSTANT_LIST_INDEX"/>
   </Match>
-  <Match>
-    <!-- https://github.com/spotbugs/spotbugs/issues/925 -->
-    <Bug pattern="PCOA_PARTIALLY_CONSTRUCTED_OBJECT_ACCESS"/>
-  </Match>
+
   <Match>
     <!-- https://github.com/spotbugs/spotbugs/issues/293 -->
     <Bug pattern="OBL_UNSATISFIED_OBLIGATION"/>
+  </Match>
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Bug pattern="SE_NO_SERIALVERSIONID" />
+  </Match>
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Bug pattern="SERVLET_PARAMETER" />
+  </Match>
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Bug pattern="WEM_WEAK_EXCEPTION_MESSAGING" />
+  </Match>
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Bug pattern="ODR_OPEN_DATABASE_RESOURCE" />
+  </Match>
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Bug pattern="XSS_SERVLET" />
+  </Match>
+  <Match>
+    <!-- https://github.com/GoogleCloudPlatform/java-repo-tools/issues/136 -->
+    <Bug pattern="HARD_CODE_PASSWORD" />
   </Match>
 </FindBugsFilter>
