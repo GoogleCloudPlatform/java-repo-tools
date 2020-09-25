@@ -49,7 +49,7 @@
     <property name="ignorePattern"
       value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
   </module>
-
+  <module name="SuppressWarningsFilter"/><!-- lesv IMPORTANT -->
   <module name="TreeWalker">
     <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
     <module name="SuppressWarningsHolder"/><!-- lesv -->
