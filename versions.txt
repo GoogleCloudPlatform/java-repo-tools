@@ -1,0 +1,4 @@
+# Format:
+# module:released-version:current-version
+
+shared-configuration:1.0.21:1.0.22-SNAPSHOT
