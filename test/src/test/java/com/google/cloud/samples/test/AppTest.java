@@ -30,7 +30,7 @@ import org.junit.runners.JUnit4;
  */
 @RunWith(JUnit4.class)
 public class AppTest {
-  @Test public void main_printsHelloWorld() {
+  @Test public void main_printsHelloWorldIT() {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     System.setOut(new PrintStream(out));
 

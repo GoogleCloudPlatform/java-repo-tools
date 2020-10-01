@@ -24,4 +24,7 @@ limitations under the License.
   <!-- Suppress checks for generated code. -->
   <suppress files="[/\\]target[/\\]" checks=".+"/>
   <suppress files=".*AutoValue_.*\.java$" checks=".+"/>
+
+  <!-- Suppress AbbreviationAsWordInName for tests -->
+  <suppress files=".*/src/test/java/.*\.java" checks="AbbreviationAsWordInName" />
 </suppressions>
