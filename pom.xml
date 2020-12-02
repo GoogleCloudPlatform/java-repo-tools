@@ -333,7 +333,7 @@ limitations under the License.
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
-      <version>4.1.4</version>
+      <version>4.2.0</version>
       <optional>true</optional>
     </dependency>
   </dependencies>
