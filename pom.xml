@@ -72,8 +72,8 @@ limitations under the License.
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
     <developer>
-      <name>Dane Zeke Liergaard</name>
-      <email>dzlier@google.com</email>
+      <name>Emily Ball</name>
+      <email>emilyball@google.com</email>
       <organization>Google Inc.</organization>
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
@@ -324,7 +324,50 @@ limitations under the License.
             </executions>
           </plugin>
 
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <inherited>false</inherited>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <inherited>false</inherited>
+          </plugin>
+
         </plugins>
+
+        <pluginManagement>
+          <plugins>
+            <!-- Plugins for release. See: http://central.sonatype.org/pages/apache-maven.html -->
+            <plugin>
+              <groupId>org.sonatype.plugins</groupId>
+              <artifactId>nexus-staging-maven-plugin</artifactId>
+              <version>${nexus-staging-maven-plugin}</version>
+              <extensions>true</extensions>
+              <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                <stagingProfileId>2145015f0f5c04</stagingProfileId>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>${maven-release-plugin}</version>
+              <configuration>
+                <tagBase>scm:git:ssh://git@github.com/GoogleCloudPlatform/java-repo-tools.git</tagBase>
+                <tagNameFormat>checkstyle-config-v@{project.version}</tagNameFormat>
+                <useReleaseProfile>false</useReleaseProfile>
+                <releaseProfiles>release</releaseProfiles>
+                <goals>deploy</goals>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+
+
       </build>
     </profile>
   </profiles>
