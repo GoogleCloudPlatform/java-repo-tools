@@ -22,5 +22,5 @@ jobs:
         run: mvn -B clean verify
       - name: Test lint
         run: cd test && mvn -B -P lint clean verify
-      - name: notify CodeCov
-        run: bash <(curl -s https://codecov.io/bash)
+#      - name: notify CodeCov
+#        run: bash <(curl -s https://codecov.io/bash)
