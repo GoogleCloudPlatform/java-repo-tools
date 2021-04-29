@@ -26,15 +26,15 @@ limitations under the License.
     <maven-release-plugin>2.5.3</maven-release-plugin><!-- could be 3.0.0-M1 -->
     <maven-compiler-plugin>3.8.1</maven-compiler-plugin>
     <nexus-staging-maven-plugin>1.6.8</nexus-staging-maven-plugin>
-    <versions-maven-plugin>2.7</versions-maven-plugin>
+    <versions-maven-plugin>2.8.1</versions-maven-plugin>
     <maven-gpg-plugin>1.6</maven-gpg-plugin>
-    <pmdVersion>6.33.0</pmdVersion>
+    <pmdVersion>6.34.0</pmdVersion>
     <skipTests>false</skipTests>
   </properties>
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>shared-configuration</artifactId>
-  <version>1.0.22-SNAPSHOT</version><!-- {x-version-update:shared-configuration:current} -->
+  <version>1.0.23-SNAPSHOT</version><!-- {x-version-update:shared-configuration:current} -->
   <packaging>pom</packaging>
 
   <name>${project.groupId}:${project.artifactId}</name>
@@ -72,8 +72,8 @@ limitations under the License.
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
     <developer>
-      <name>Dane Zeke Liergaard</name>
-      <email>dzlier@google.com</email>
+      <name>Emily Ball</name>
+      <email>emilyball@google.com</email>
       <organization>Google Inc.</organization>
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
@@ -197,7 +197,7 @@ limitations under the License.
           <plugin><!-- SPOTBUGS -->
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-maven-plugin</artifactId>
-            <version>4.2.2</version>
+            <version>4.2.3</version>
             <executions>
               <execution>
                 <id>analyze-compile</id>
@@ -211,12 +211,12 @@ limitations under the License.
               <dependency>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs</artifactId>
-                <version>4.2.2</version>
+                <version>4.2.3</version>
               </dependency>
               <dependency>
                 <groupId>com.google.cloud.samples</groupId>
                 <artifactId>checkstyle-configuration</artifactId>
-                <version>1.0.22-SNAPSHOT</version>
+                <version>1.0.23-SNAPSHOT</version>
               </dependency>
             </dependencies>
             <configuration>
@@ -306,7 +306,7 @@ limitations under the License.
               <dependency>
                 <groupId>com.google.cloud.samples</groupId>
                 <artifactId>checkstyle-configuration</artifactId>
-                <version>1.0.22-SNAPSHOT</version>
+                <version>1.0.23-SNAPSHOT</version>
               </dependency>
               <dependency>
                 <groupId>com.puppycrawl.tools</groupId>
@@ -324,7 +324,50 @@ limitations under the License.
             </executions>
           </plugin>
 
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <inherited>false</inherited>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <inherited>false</inherited>
+          </plugin>
+
         </plugins>
+
+        <pluginManagement>
+          <plugins>
+            <!-- Plugins for release. See: http://central.sonatype.org/pages/apache-maven.html -->
+            <plugin>
+              <groupId>org.sonatype.plugins</groupId>
+              <artifactId>nexus-staging-maven-plugin</artifactId>
+              <version>${nexus-staging-maven-plugin}</version>
+              <extensions>true</extensions>
+              <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                <stagingProfileId>2145015f0f5c04</stagingProfileId>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>${maven-release-plugin}</version>
+              <configuration>
+                <tagBase>scm:git:ssh://git@github.com/GoogleCloudPlatform/java-repo-tools.git</tagBase>
+                <tagNameFormat>checkstyle-config-v@{project.version}</tagNameFormat>
+                <useReleaseProfile>false</useReleaseProfile>
+                <releaseProfiles>release</releaseProfiles>
+                <goals>deploy</goals>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+
+
       </build>
     </profile>
   </profiles>
@@ -333,8 +376,15 @@ limitations under the License.
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
-      <version>4.2.2</version>
+      <version>4.2.3</version>
       <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-core</artifactId>
+      <version>1.94.8</version>
+      <scope>test</scope>
+      <classifier>tests</classifier>
     </dependency>
   </dependencies>
 
