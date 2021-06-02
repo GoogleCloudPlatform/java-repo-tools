@@ -1,9 +1,7 @@
 # Google Cloud Platform repository tools for Java®
 
-[![Build
-Status](https://travis-ci.org/GoogleCloudPlatform/java-repo-tools.svg?branch=master)](https://travis-ci.org/GoogleCloudPlatform/java-repo-tools) [![Maven](https://maven-badges.herokuapp.com/maven-central/com.google.cloud.samples/shared-configuration/badge.svg)
-](http://search.maven.org/#search%7Cga%7C1%7Ccom.google.cloud.samples) [![Coverage
-Status](https://codecov.io/gh/GoogleCloudPlatform/java-repo-tools/branch/master/graph/badge.svg)](https://codecov.io/gh/GoogleCloudPlatform/java-repo-tools)
+[![Maven](https://maven-badges.herokuapp.com/maven-central/com.google.cloud.samples/shared-configuration/badge.svg)
+](http://search.maven.org/#search%7Cga%7C1%7Ccom.google.cloud.samples) 
 
 This is a collection of common tools used to maintain and test Java repositories
 in the [GoogleCloudPlatform](https://github.com/GoogleCloudPlatform)
