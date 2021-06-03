@@ -19,10 +19,12 @@
     <property name="headerFile" value="${checkstyle.header.file}"/>
     <property name="multiLines" value="1,2,16,17"/>
   </module>
+  <module name="SuppressWarningsFilter"/><!-- IMPORTANT: Allows use of SuppressWarnings annotation -->
 
   <property name="charset" value="UTF-8"/>
 
-  <property name="severity" value="error"/><!-- lesv: was warning -->
+  <!-- lesv: was warning -->
+  <property name="severity" value="error"/>
 
   <property name="fileExtensions" value="java, properties, xml"/>
   <!-- Excludes all 'module-info.java' files              -->
@@ -46,18 +48,17 @@
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
     <property name="max" value="100"/>
-    <property name="ignorePattern"
-      value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+    <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
   </module>
-  <module name="SuppressWarningsFilter"/><!-- IMPORTANT: Allows use of SuppressWarnings annotation -->
+
   <module name="TreeWalker">
     <!-- Allow silencing rules with annotations http://stackoverflow.com/a/22556386/101923 -->
-    <module name="SuppressWarningsHolder"/><!-- lesv -->
+    <module name="SuppressWarningsHolder" /><!-- lesv -->
     <!-- Allow silencing with comment http://stackoverflow.com/questions/4023185 -->
     <module name="SuppressionCommentFilter"><!-- lesv -->
-      <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
-      <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
-      <property name="checkFormat" value="$1"/>
+      <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)" />
+      <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)" />
+      <property name="checkFormat" value="$1" />
     </module>
 
     <module name="OuterTypeFilename"/>
@@ -334,7 +335,7 @@
         value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>
     </module>
     <module name="JavadocMethod">
-      <property name="scope" value="public"/>
+      <property name="accessModifiers" value="public"/>
       <property name="allowMissingParamTags" value="true"/>
       <property name="allowMissingReturnTag" value="true"/>
       <property name="allowedAnnotations" value="Override, Test"/>
@@ -359,7 +360,7 @@
       <message key="name.invalidPattern"
         value="Method name ''{0}'' must match pattern ''{1}''."/>
     </module>
-    <module name="SingleLineJavadoc">
+    <module name="SingleLineJavadoc"> <!-- lesv -->
       <property name="ignoreInlineTags" value="false"/>
     </module>
     <module name="EmptyCatchBlock">
