@@ -19,12 +19,14 @@ Don't forget to specify a release tag on Github once your PR is accepted.
 From the root project folder, run the following command to release `checkstyle-config`:
 
     cd checkstyle-config
-    mvn clean verify deploy -P release
+    mvn -P release clean verify deploy 
+    mvn -P release deploy 
 
 Next, use the following to release `shared-configuration`:
 
     cd ..
-    mvn clean verify deploy -P release
+    mvn -P release clean verify 
+    mvn -P release deploy 
 
 That will open, upload, close, and release.  The parent will need you to visit sonatype to close,
 and verify manually.
