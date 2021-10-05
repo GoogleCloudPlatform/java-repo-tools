@@ -10,7 +10,7 @@ Remove the `-SNAPSHOT` from the versions property in the following POMs:
 * checkstyle-config/pom.xml (one)
 * test/pom.xml (one)
 
-PR changes to master, and once accepted use `git pull` update the master branch locally.
+PR changes to main, and once accepted use `git pull` update the main branch locally.
 
 Don't forget to specify a release tag on Github once your PR is accepted.
 
@@ -41,7 +41,7 @@ Add the `-SNAPSHOT` from the versions property in the following POMs:
 * checkstyle-config/pom.xml (1 place)
 * test/pom.xml (1 place)
 
-PR changes to master.
+PR changes to main.
 
 ## .m2 Settings
 <!--
