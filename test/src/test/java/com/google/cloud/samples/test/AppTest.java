@@ -30,13 +30,13 @@ import org.junit.runners.JUnit4;
  */
 @RunWith(JUnit4.class)
 public class AppTest {
-  @Test public void main_printsHelloWorldIT() {
+  @Test public void main_printsHelloWorldIT() throws Exception {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    System.setOut(new PrintStream(out));
+    System.setOut(new PrintStream(out, true, "UTF-8"));
 
     App.main(new String[0]);
 
-    String greeting = out.toString();
+    String greeting = out.toString("UTF-8");
     assertThat(greeting).contains("Hello World!");
   }
 }

@@ -36,6 +36,8 @@ Please ensure that samples function without this parent definition.
 
 ## USAGE
 
+### WARNING - CheckStyle currently requires Java 11
+
 ```bash
 mvn -P lint clean verify
 ```

@@ -20,13 +20,11 @@ From the root project folder, run the following command to release `checkstyle-c
 
     cd checkstyle-config
     mvn -P release clean verify deploy 
-    mvn -P release deploy 
 
 Next, use the following to release `shared-configuration`:
 
     cd ..
-    mvn -P release clean verify 
-    mvn -P release deploy 
+    mvn -P release clean verify deploy
 
 That will open, upload, close, and release.  The parent will need you to visit sonatype to close,
 and verify manually.
