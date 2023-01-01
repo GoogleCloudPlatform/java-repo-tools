@@ -28,7 +28,7 @@ limitations under the License.
     <nexus-staging-maven-plugin>1.6.13</nexus-staging-maven-plugin>
     <versions-maven-plugin>2.8.1</versions-maven-plugin>
     <maven-gpg-plugin>3.0.1</maven-gpg-plugin>
-    <pmdVersion>6.45.0</pmdVersion>
+    <pmdVersion>6.53.0</pmdVersion>
     <skipTests>false</skipTests>
   </properties>
 
