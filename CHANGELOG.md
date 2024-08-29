@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/GoogleCloudPlatform/java-repo-tools/compare/v1.2.2...v1.2.3) (2024-08-29)
+
+
+### Bug Fixes
+
+* add configuration for release-trigger bot ([1fb6304](https://github.com/GoogleCloudPlatform/java-repo-tools/commit/1fb6304a1c9a8f5c82a3a82c5aa7cf5d1ab96092))
+
 ### [1.2.1](https://github.com/GoogleCloudPlatform/java-repo-tools/compare/v1.2.0...v1.2.1) (2022-05-10)
 
 
