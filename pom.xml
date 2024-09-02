@@ -420,7 +420,7 @@ limitations under the License.
       <plugin> <!-- Versions -->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
-        <version>2.15.0</version>
+        <version>2.17.1</version>
       </plugin>
 
       <plugin> <!-- JACOCO - reporting -->
