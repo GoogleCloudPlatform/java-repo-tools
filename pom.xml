@@ -53,12 +53,6 @@ limitations under the License.
 
   <developers>
     <developer>
-      <name>Les Vogel</name>
-      <email>lesv@google.com</email>
-      <organization>Google Inc.</organization>
-      <organizationUrl>https://cloud.google.com</organizationUrl>
-    </developer>
-    <developer>
       <name>Kurtis Van Gent</name>
       <email>kvg@google.com</email>
       <organization>Google Inc.</organization>
@@ -74,6 +68,12 @@ limitations under the License.
       <name>Emily Ball</name>
       <email>emilyball@google.com</email>
       <organization>Google Inc.</organization>
+      <organizationUrl>https://cloud.google.com</organizationUrl>
+    </developer>
+    <developer>
+      <name>Eric Schmidt</name>
+      <email>erschmid@google.com</email>
+      <organization>Google LLC</organization>
       <organizationUrl>https://cloud.google.com</organizationUrl>
     </developer>
   </developers>
