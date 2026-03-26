@@ -1,5 +1,5 @@
 # Format:
 # module:released-version:current-version
 
-shared-configuration:1.2.1:1.2.2-SNAPSHOT
-checkstyle-configuration:1.2.1:1.2.2-SNAPSHOT
+shared-configuration:1.2.2:1.2.2
+checkstyle-configuration:1.2.2:1.2.2
