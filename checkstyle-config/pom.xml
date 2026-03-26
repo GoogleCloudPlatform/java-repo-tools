@@ -18,7 +18,7 @@ limitations under the License.
 
   <groupId>com.google.cloud.samples</groupId>
   <artifactId>checkstyle-configuration</artifactId>
-  <version>1.2.2-SNAPSHOT</version><!-- {x-version-update:checkstyle-configuration:current} -->
+  <version>1.2.2</version><!-- {x-version-update:checkstyle-configuration:current} -->
   <packaging>jar</packaging>
 
   <properties>
